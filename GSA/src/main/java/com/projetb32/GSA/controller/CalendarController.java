@@ -3,6 +3,9 @@ package com.projetb32.GSA.controller;
 
 import com.projetb32.GSA.entity.Calendar;
 import com.projetb32.GSA.repository.CalendarRepository;
+import com.projetb32.GSA.repository.CompanyRepository;
+import com.projetb32.GSA.repository.UserRepository;
+import com.projetb32.GSA.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +22,17 @@ public class CalendarController  {
     private CalendarRepository calendarRepository;
 
 
+    @Autowired
+    private CompanyRepository companyRepository;
+
+
+
+    @Autowired
+    private CompanyService companyService;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("/calendars")
     public ResponseEntity<List<Calendar>> GetCalendar() {
         List<Calendar> listcalendar = null;
@@ -32,8 +46,7 @@ public class CalendarController  {
 
     @PostMapping("/calendars/{userId}/{companyId}")
     public ResponseEntity<Calendar> addCalendar(@RequestBody Calendar calendar, @PathVariable long userId, @PathVariable long companyId) {
-        Calendar calendarLocal = null;
-        calendarLocal = calendarRepository.save(calendar);
+        Calendar calendarLocal = companyService.addStep(calendar, userId,companyId);
 
         if (calendarLocal == null)
             return ResponseEntity.noContent().build();
