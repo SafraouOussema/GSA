@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^6.0.2",
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
+    "@syncfusion/ej2-angular-calendars": "^17.3.28",
     "@syncfusion/ej2-angular-schedule": "^17.3.28",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",

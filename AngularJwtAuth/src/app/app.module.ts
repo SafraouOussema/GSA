@@ -11,8 +11,10 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { PmComponent } from './pm/pm.component';
+import { DatePickerModule} from '@syncfusion/ej2-angular-calendars';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import {ScheduleModule} from '@syncfusion/ej2-angular-schedule';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ScheduleModule,
+    DatePickerModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
