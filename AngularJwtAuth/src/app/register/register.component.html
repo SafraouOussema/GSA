@@ -37,14 +37,6 @@
           <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
         </div>
       </div>
-      <div class="form-group has-feedback">
-        <label for="address">Adress *</label>
-        <input type="address" class="form-control" name="adress" [(ngModel)]="form.address" #address="ngModel"
-               required minlength="6" />
-        <div *ngIf="f.submitted && address.invalid">
-          <div *ngIf="address.errors.required">Adress is required</div>
-        </div>
-      </div>
       <div class="form-group">
         <button class="btn btn-primary">Register</button>
         <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
