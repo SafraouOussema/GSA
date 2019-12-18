@@ -2,7 +2,6 @@ import { Component, OnInit , ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {CompanyService} from '../services/company.service';
-import {SignUpInfo} from '../auth/signup-info';
 import {company} from './company';
 @Component({
   selector: 'app-company',
@@ -18,6 +17,7 @@ export class CompanyComponent implements OnInit {
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
+  gg : any = {};
 
   constructor(private route: ActivatedRoute,
               private router: Router,private compnayService:CompanyService) {
@@ -68,8 +68,9 @@ export class CompanyComponent implements OnInit {
 
   remove(form: NgForm) {
 
+    this.gg = form ;
 
-    this.compnayService.remove(form).subscribe(result => {
+    this.compnayService.remove(this.gg).subscribe(result => {
       this.gotoList();
       this.loadData();
     }, error => console.error(error));

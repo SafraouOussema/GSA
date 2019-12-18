@@ -12,7 +12,9 @@ export class CompanyService {
   public API = '//localhost:8080/application';
 
   public company_API = this.API + '/companys';
-  public companysd_API = this.API + '/companys/';
+   public companydelte_API = this.API+'/companys';
+
+
 
   constructor(private http: HttpClient) {
   }
@@ -49,10 +51,10 @@ export class CompanyService {
 
 
 
-  remove(delniv: any): Observable<any> {
+  remove(del: any): Observable<any> {
     let result: Observable<Object>;
 
-    result = this.http.post(this.companysd_API, delniv);
+    result = this.http.post(this.companydelte_API,del);
 
     return result;
   }
