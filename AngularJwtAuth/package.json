@@ -22,7 +22,11 @@
     "@angular/router": "^6.0.2",
     "@syncfusion/ej2-angular-calendars": "^17.3.28",
     "@syncfusion/ej2-angular-schedule": "^17.3.28",
+    "angular-6-datatable": "^0.8.0",
+    "angular-font-awesome": "^3.1.2",
     "core-js": "^2.5.4",
+    "font-awesome": "^4.7.0",
+    "ngx-sweetalert2": "^0.2.7",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

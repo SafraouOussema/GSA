@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {DataTableModule} from "angular-6-datatable";
+
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,6 +18,9 @@ import { DatePickerModule} from '@syncfusion/ej2-angular-calendars';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 import {ScheduleModule} from '@syncfusion/ej2-angular-schedule';
+import { CompanyComponent } from './company/company.component';
+import {CompanyService} from './services/company.service';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,9 @@ import {ScheduleModule} from '@syncfusion/ej2-angular-schedule';
     RegisterComponent,
     HomeComponent,
     AdminComponent,
-    PmComponent
+    PmComponent,
+    CompanyComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +40,13 @@ import {ScheduleModule} from '@syncfusion/ej2-angular-schedule';
     FormsModule,
     HttpClientModule,
     ScheduleModule,
-    DatePickerModule
+    DatePickerModule,
+    DataTableModule
+
+
+
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,CompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

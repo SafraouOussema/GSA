@@ -7,11 +7,16 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
-
+import {CompanyComponent} from './company/company.component'
 const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent
+    },
+    {
+
+      path: 'company',
+      component: CompanyComponent
     },
     {
         path: 'user',

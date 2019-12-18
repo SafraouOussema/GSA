@@ -8,6 +8,12 @@
       <li *ngIf="authority === 'user'" class="nav-item">
         <a class="nav-link" routerLink="user">User Board</a>
       </li>
+      <li *ngIf="authority === 'user'" class="nav-item">
+        <a class="nav-link" routerLink="company">company</a>
+      </li>
+      <li *ngIf="authority === 'user'" class="nav-item">
+        <a class="nav-link" routerLink="signup">ajouter user</a>
+      </li>
       <li *ngIf="authority === 'admin'" class="nav-item">
         <a class="nav-link" routerLink="admin">Admin Board</a>
       </li>
