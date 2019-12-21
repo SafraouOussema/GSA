@@ -20,7 +20,7 @@ public class CompanyService {
     @Autowired
     private CalendarRepository calendarRepository;
 
-    public Calendar addStep(Calendar calendar, long companyId,Long userId) {
+    public Calendar addStep(Calendar calendar,Long userId, long companyId) {
         calendar.setUser(userRepository.findById(userId).get());
         calendar.setCompany(companyRepository.findById(companyId).get());
 

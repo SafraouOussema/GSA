@@ -45,7 +45,6 @@ export class CompanyComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form);
 
     this.Company = new company(
       this.form.label,
@@ -53,7 +52,6 @@ export class CompanyComponent implements OnInit {
 
     this.compnayService.save(this.Company).subscribe(
       data => {
-        console.log(data);
         this.isSignedUp = true;
         this.isSignUpFailed = false;
       },

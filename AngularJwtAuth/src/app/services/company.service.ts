@@ -12,7 +12,7 @@ export class CompanyService {
   public API = '//localhost:8080/application';
 
   public company_API = this.API + '/companys';
-   public companydelte_API = this.API+'/companys';
+   public companydelte_API = this.API+'/companys/';
 
 
 
@@ -26,7 +26,7 @@ export class CompanyService {
 
   save(niv: any): Observable<any> {
     let result: Observable<Object>;
-    console.log(result);
+
     result = this.http.post(
       this.company_API,
       niv,
@@ -38,6 +38,7 @@ export class CompanyService {
     );
 
     return result;
+
   }
 
 
@@ -51,12 +52,11 @@ export class CompanyService {
 
 
 
-  remove(del: any): Observable<any> {
+  remove(del:any): Observable<any> {
+
     let result: Observable<Object>;
-
-    result = this.http.post(this.companydelte_API,del);
-
-    return result;
+     result = this.http.delete(this.companydelte_API+del);
+     return result;
   }
 
 
