@@ -94,12 +94,14 @@
         <label for="date">date</label>
         <input type="text" class="form-control" name="label" [(ngModel)]="form.date" #label="ngModel" required />
         <div *ngIf="f.submitted && label.invalid">
-          <div *ngIf="label.errors.required">Name is required</div>
+          <div *ngIf="label.errors.required">date is required</div>
         </div>
       </div>
       <div class="col-sm-6">
 
-      <select  [(ngModel)]="selecteduser"  name="mater" class="form-control selectpicker show-tick">
+        <p> utilisateur</p>
+
+        <select  [(ngModel)]="selecteduser"  name="mater" class="form-control selectpicker show-tick">
         <option *ngFor="let user of users" [value]="user.id">
           {{ user.name }} </option>
 
@@ -108,6 +110,8 @@
   </div>
 
       <div class="col-sm-6">
+        <p> company</p>
+
         <select   [(ngModel)]="selectedcompany"   name="profile" class="form-control selectpicker show-tick">
           <option *ngFor="let company of companys" [value]="company.id">
             {{ company.label }} </option>

@@ -14,11 +14,9 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { PmComponent } from './pm/pm.component';
-import { DatePickerModule} from '@syncfusion/ej2-angular-calendars';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
-import {ScheduleModule} from '@syncfusion/ej2-angular-schedule';
-import { CompanyComponent } from './company/company.component';
+ import { CompanyComponent } from './company/company.component';
 import {CompanyService} from './services/company.service';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FicheComponent } from './fiche/fiche.component';
@@ -27,6 +25,8 @@ import {FicheService} from './services/fiche.service';
 import { LocauxComponent } from './locaux/locaux.component';
 import { DeratisationComponent } from './deratisation/deratisation.component';
 import { DesinsectisationComponent } from './desinsectisation/desinsectisation.component';
+import { AficheComponent } from './afiche/afiche.component';
+import { FichedetailComponent } from './fichedetail/fichedetail.component';
 
 
 @NgModule({
@@ -44,16 +44,16 @@ import { DesinsectisationComponent } from './desinsectisation/desinsectisation.c
     ProduitComponent,
     LocauxComponent,
     DeratisationComponent,
-    DesinsectisationComponent
+    DesinsectisationComponent,
+    AficheComponent,
+    FichedetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ScheduleModule,
-    DatePickerModule,
-    DataTableModule
+      DataTableModule
 
 
 

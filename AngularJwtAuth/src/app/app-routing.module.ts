@@ -14,6 +14,8 @@ import {ProduitComponent} from './produit/produit.component';
 import {LocauxComponent} from './locaux/locaux.component';
 import {DesinsectisationComponent} from './desinsectisation/desinsectisation.component';
 import {DeratisationComponent} from './deratisation/deratisation.component';
+import {AficheComponent} from './afiche/afiche.component';
+import {FichedetailComponent} from './fichedetail/fichedetail.component';
 const routes: Routes = [
     {
         path: 'home',
@@ -30,6 +32,15 @@ const routes: Routes = [
   {
     path:'fiche',
     component:FicheComponent
+  },{
+    path: 'afichd/:fichid/:companyid',
+    component: FichedetailComponent
+
+  },
+  {
+
+    path: 'afich',
+    component: AficheComponent
   },
     {
       path: 'company',

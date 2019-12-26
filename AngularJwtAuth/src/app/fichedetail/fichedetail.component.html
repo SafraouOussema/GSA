@@ -1,0 +1,133 @@
+
+
+<section class="content">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-7 col-md-6 col-sm-12">
+        <h2>fiche detail
+        </h2>
+      </div>
+      <div class="col-lg-5 col-md-6 col-sm-12">
+
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <!-- Advanced Validation -->
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+
+          <div class="body">
+
+
+
+            <h3 *ngIf="com"> Fiche de passage d'assainissement: {{ com.label }}</h3>
+
+            <p *ngIf="gcs"> Date de passage : {{ gcs[0].fiche.calendar.date }}</p>
+            <p *ngIf="gcs"> nom d'opérateur : {{ gcs[0].fiche.user.name }}</p>
+
+            <table class="table table-striped " [mfData]="gcs"  #mf="mfDataTable" >
+              <thead>
+              <tr>
+
+
+                <th  >
+                  <mfDefaultSorter by="nom"> </mfDefaultSorter>
+                </th>
+
+                <th  >
+                  <mfDefaultSorter by="nom">deratisation</mfDefaultSorter>
+                </th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Locaux</td>
+                <td>produit</td>
+              </tr>
+              <tr *ngFor="let gc of mf.data">
+
+                <td >{{gc.locaux.name}}</td>
+                <td >{{gc.produit.pname}}</td>
+              </tr>
+              </tbody>
+            </table>
+
+            <table class="table table-striped " [mfData]="desi"  #de="mfDataTable" >
+              <thead>
+              <tr>
+
+
+                <th  >
+                  <mfDefaultSorter by="nom"> </mfDefaultSorter>
+                </th>
+
+                <th  >
+                  <mfDefaultSorter by="nom">desinsectisation</mfDefaultSorter>
+                </th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Locaux</td>
+                <td>produit</td>
+              </tr>
+              <tr *ngFor="let gc of de.data">
+
+                <td >{{gc.locaux.name}}</td>
+                <td >{{gc.produit.pname}}</td>
+              </tr>
+              </tbody>
+            </table>
+
+
+            <table class="table table-striped ">
+              <thead>
+              <tr>
+                <th  >
+                  heure d'arrivéé
+                </th>
+                <th  >
+                   heure de départ
+                </th>
+                <th  >
+                  observations
+                </th>
+                <th  >
+                  nom de l'encadreur
+                </th>
+                <th>
+                  nom de responsable
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td *ngIf="gcs"> {{ gcs[0].fiche.harrive }}</td>
+                <td *ngIf="gcs"> {{ gcs[0].fiche.hdepart }}</td>
+                <td *ngIf="gcs"> {{ gcs[0].fiche.observations }}</td>
+                <td *ngIf="gcs"> {{ gcs[0].fiche.nencadreur }}</td>
+                <td *ngIf="gcs"> {{ gcs[0].fiche.nresponsable }}</td>
+               </tr>
+              </tbody>
+            </table>
+
+
+
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+</section>

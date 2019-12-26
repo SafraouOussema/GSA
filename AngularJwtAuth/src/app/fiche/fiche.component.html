@@ -101,16 +101,46 @@
   <div class="row col-sm-6" style="max-width:350px;">
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
+      <div class="col-sm-6">
+          <p> utilisateur</p>
+        <select  [(ngModel)]="selecteduser"  name="mater" class="form-control selectpicker show-tick">
+          <option *ngFor="let user of users" [value]="user.id">
+            {{ user.name }} </option>
+
+        </select>
+        <p *ngIf="selecteduser">  user choisit.   </p>
+
+
+        <p> company</p>
+        <select   [(ngModel)]="selectedcompany"   name="profile" class="form-control selectpicker show-tick">
+          <option *ngFor="let company of companys" [value]="company.id">
+            {{ company.label }} </option>
+
+        </select>
+        <p  *ngIf="selectedcompany" >company choisit. </p>
+
+
+        <p> calender</p>
+        <select   [(ngModel)]="selectedcalendar"   name="profile" class="form-control selectpicker show-tick">
+          <option *ngFor="let calendar of niveaus" [value]="calendar.id">
+            {{ calendar.date }} </option>
+
+        </select>
+        <p  *ngIf="selectedcalendar" >calendar choisit. </p>
+      </div>
+
+
+
       <div class="form-group">
-        <label for="nresponsable">Nom responsable</label>
-        <input type="text" class="form-control" name="label" [(ngModel)]="form.nresponsable" #label="ngModel" required />
+        <label for="nresponsable"></label>
+        <input type="text" class="form-control" name="label" placeholder="Nom responsable" [(ngModel)]="form.nresponsable" #label="ngModel" required />
         <div *ngIf="f.submitted && label.invalid">
           <div *ngIf="label.errors.required">Nom responsable is required</div>
         </div>
       </div>
       <div class="form-group">
         <label for="incerticide">incerticide</label>
-        <input type="text" class="form-control" name="label" [(ngModel)]="form.incerticide" #label="ngModel" required />
+        <input type="text" class="form-control" name="label"  [(ngModel)]="form.incerticide" #label="ngModel" required />
         <div *ngIf="f.submitted && label.invalid">
           <div *ngIf="label.errors.required">incerticide is required</div>
         </div>
@@ -150,34 +180,6 @@
 
 
 
-      <div class="col-sm-6">
-
-        <select  [(ngModel)]="selecteduser"  name="mater" class="form-control selectpicker show-tick">
-          <option *ngFor="let user of users" [value]="user.id">
-            {{ user.name }} </option>
-
-        </select>
-        <p *ngIf="selecteduser">  user choisit.   </p>
-      </div>
-
-      <div class="col-sm-6">
-        <select   [(ngModel)]="selectedcompany"   name="profile" class="form-control selectpicker show-tick">
-          <option *ngFor="let company of companys" [value]="company.id">
-            {{ company.label }} </option>
-
-        </select>
-        <p  *ngIf="selectedcompany" >company choisit. </p>
-      </div>
-
-
-      <div class="col-sm-6">
-        <select   [(ngModel)]="selectedcalendar"   name="profile" class="form-control selectpicker show-tick">
-          <option *ngFor="let calendar of niveaus" [value]="calendar.id">
-            {{ calendar.date }} </option>
-
-        </select>
-        <p  *ngIf="selectedcalendar" >calendar choisit. </p>
-      </div>
 
       <div class="form-group">
         <button class="btn btn-primary">Ajouter</button>
