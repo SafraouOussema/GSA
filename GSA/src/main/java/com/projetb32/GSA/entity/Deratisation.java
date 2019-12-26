@@ -19,6 +19,10 @@ public class Deratisation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
+    @ManyToOne
+    @JoinColumn(name = "fiche_id")
+    private Fiche fiche ;
+
 
     @ManyToOne
     @JoinColumn(name = "locaux_id")

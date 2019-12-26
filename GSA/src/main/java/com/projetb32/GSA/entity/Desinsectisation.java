@@ -21,6 +21,12 @@ public class Desinsectisation implements Serializable {
 
 
     @ManyToOne
+    @JoinColumn(name = "fiche_id")
+    private Fiche fiche ;
+
+
+
+    @ManyToOne
     @JoinColumn(name = "locaux_id")
     private Locaux locaux ;
 

@@ -22,7 +22,6 @@ public class Fiche implements Serializable {
     private Long id ;
 
 
-    private String locaux;
     private String nresponsable;
     private String incerticide;
     private String nencadreur;
