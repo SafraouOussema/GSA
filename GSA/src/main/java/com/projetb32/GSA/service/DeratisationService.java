@@ -2,12 +2,15 @@ package com.projetb32.GSA.service;
 
 
 import com.projetb32.GSA.entity.Deratisation;
+import com.projetb32.GSA.entity.Fiche;
 import com.projetb32.GSA.repository.DeratisationRepository;
 import com.projetb32.GSA.repository.FicheReposity;
 import com.projetb32.GSA.repository.LocauxRepository;
 import com.projetb32.GSA.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class DeratisationService {
@@ -31,6 +34,13 @@ public class DeratisationService {
 
         return deratisationRepository.save(deratisation);
     }
+
+
+    public List<Deratisation> getderatisationByFiche(long ficheId) {
+        Fiche fiche = ficheReposity.findById(ficheId).get();
+        return deratisationRepository.findDeratisationByFiche(fiche);
+    }
+
 
 
 }

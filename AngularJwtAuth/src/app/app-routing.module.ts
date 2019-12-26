@@ -12,6 +12,8 @@ import {CalendarComponent} from './calendar/calendar.component';
 import {FicheComponent} from './fiche/fiche.component';
 import {ProduitComponent} from './produit/produit.component';
 import {LocauxComponent} from './locaux/locaux.component';
+import {DesinsectisationComponent} from './desinsectisation/desinsectisation.component';
+import {DeratisationComponent} from './deratisation/deratisation.component';
 const routes: Routes = [
     {
         path: 'home',
@@ -32,6 +34,14 @@ const routes: Routes = [
     {
       path: 'company',
       component: CompanyComponent
+    },
+    {
+      path: 'deratisation/:fichid/:companyid',
+      component:DeratisationComponent
+    },
+    {
+      path: 'desinsectisation/:fichid/:companyid',
+      component:DesinsectisationComponent
     },
     {
       path: 'locaux/:id',

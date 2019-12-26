@@ -44,6 +44,16 @@ public class DeratisationController {
         return new ResponseEntity<>(listDeratisation, HttpStatus.OK);
     }
 
+    @GetMapping("/deratisations/{deratisationId}")
+    public ResponseEntity<List<Deratisation>> retreiveCategoryById(@PathVariable long deratisationId) {
+        List<Deratisation> deratisationList;
+        deratisationList = deratisationService.getderatisationByFiche(deratisationId);
+
+
+        return new ResponseEntity<>(deratisationList, HttpStatus.OK);
+
+    }
+
 
     @PostMapping("/deratisations/{ficheId}/{locauxId}/{produitId}")
     public ResponseEntity<Deratisation> addDeratisation(@RequestBody Deratisation deratisation,@PathVariable long ficheId,@PathVariable long locauxId, @PathVariable long produitId) {

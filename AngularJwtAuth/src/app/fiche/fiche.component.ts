@@ -76,7 +76,7 @@ export class FicheComponent implements OnInit {
   onSubmit() {
 
     this.Fiche = new fiche(
-      this.form.locaux,
+
     this.form.nresponsable,
     this.form.incerticide,
     this.form.nencadreur,

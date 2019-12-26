@@ -47,6 +47,17 @@ public class DesinsectisationController {
     }
 
 
+    @GetMapping("/desinsectisations/{desinsectisationsId}")
+    public ResponseEntity<List<Desinsectisation>> retreiveCategoryById(@PathVariable long desinsectisationsId) {
+        List<Desinsectisation> locausList;
+        locausList = desinsectisationService.getDesinsectisationByFiche(desinsectisationsId);
+
+
+        return new ResponseEntity<>(locausList, HttpStatus.OK);
+
+    }
+
+
     @PostMapping("/desinsectisations/{ficheId}/{locauxId}/{produitId}")
     public ResponseEntity<Desinsectisation> addDesinsectisation(@RequestBody Desinsectisation desinsectisation,@PathVariable long ficheId,@PathVariable long locauxId, @PathVariable long produitId) {
         Desinsectisation desinsectisationLocal = desinsectisationService.addDesinsectisation(desinsectisation,ficheId, locauxId,produitId);

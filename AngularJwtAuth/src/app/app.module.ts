@@ -25,6 +25,8 @@ import { FicheComponent } from './fiche/fiche.component';
 import { ProduitComponent } from './produit/produit.component';
 import {FicheService} from './services/fiche.service';
 import { LocauxComponent } from './locaux/locaux.component';
+import { DeratisationComponent } from './deratisation/deratisation.component';
+import { DesinsectisationComponent } from './desinsectisation/desinsectisation.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { LocauxComponent } from './locaux/locaux.component';
     CalendarComponent,
     FicheComponent,
     ProduitComponent,
-    LocauxComponent
+    LocauxComponent,
+    DeratisationComponent,
+    DesinsectisationComponent
   ],
   imports: [
     BrowserModule,
