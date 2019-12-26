@@ -2,13 +2,16 @@ package com.projetb32.GSA.controller;
 
 
 import com.projetb32.GSA.entity.Company;
+import com.projetb32.GSA.entity.Locaux;
 import com.projetb32.GSA.repository.CompanyRepository;
+import com.projetb32.GSA.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
@@ -18,6 +21,8 @@ public class CompanyController {
     @Autowired
     private CompanyRepository companyRepository;
 
+    @Autowired
+    private CompanyService companyService;
 
     @GetMapping("/companys")
     public ResponseEntity<List<Company>> GetCompany() {
@@ -28,6 +33,18 @@ public class CompanyController {
 
         return new ResponseEntity<>(listcompany, HttpStatus.OK);
     }
+    @GetMapping("/companys/{companysId}")
+    public ResponseEntity<Optional<Company>> retreiveCategoryById(@PathVariable long companysId) {
+        Optional<Company> locausList;
+        locausList = companyService.getCompanyById(companysId);
+
+        if (!locausList.isPresent())
+            return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(locausList, HttpStatus.OK);
+
+    }
+
+
 
 
     @PostMapping("/companys")

@@ -21,11 +21,12 @@ export class CalendarService {
     return this.http.get(this.API + '/calendars');
   }
 
-  save(niv: any): Observable<any> {
+
+
+  save(niv: any,userid:any,companyid:any): Observable<any> {
     let result: Observable<Object>;
-    console.log(result);
     result = this.http.post(
-      this.calendars_API,
+      this.calendarsd_API+userid+"/"+companyid,
       niv,
       {headers :
           {
@@ -51,7 +52,7 @@ export class CalendarService {
   remove(delniv: any): Observable<any> {
     let result: Observable<Object>;
 
-    result = this.http.post(this.calendarsd_API, delniv);
+    result = this.http.delete(this.calendarsd_API+delniv);
 
     return result;
   }

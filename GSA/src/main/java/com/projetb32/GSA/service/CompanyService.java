@@ -2,11 +2,14 @@ package com.projetb32.GSA.service;
 
 
 import com.projetb32.GSA.entity.Calendar;
+import com.projetb32.GSA.entity.Company;
 import com.projetb32.GSA.repository.CalendarRepository;
 import com.projetb32.GSA.repository.CompanyRepository;
 import com.projetb32.GSA.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 public class CompanyService {
@@ -26,6 +29,9 @@ public class CompanyService {
 
 
         return calendarRepository.save(calendar);
+    }
+    public Optional<Company> getCompanyById(Long id) {
+        return companyRepository.findById(id);
     }
 
 

@@ -1,10 +1,8 @@
 export class calendar {
-  label: string;
-  address: string;
-  date: Date ;
+  date: string ;
 
-  constructor(label: string, address: string) {
-    this.label = label;
-    this.address = address;
+
+  constructor(date:string) {
+    this.date = date ;
   }
 }

@@ -2,33 +2,41 @@ import { Component, OnInit , ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {CalendarService} from '../services/calendar.service';
-import {calendar} from './calendar';
 import {CompanyService} from '../services/company.service';
-import {UserService} from '../services/user.service'
+import {UserService} from '../services/user.service';
+import {FicheService} from '../services/fiche.service';
+
+import {fiche} from './fiche';
+
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  selector: 'app-fiche',
+  templateUrl: './fiche.component.html',
+  styleUrls: ['./fiche.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class FicheComponent implements OnInit {
+
 
   public selecteduser = null;
   public selectedcompany = null;
+  public selectedcalendar = null;
 
   form: any = {};
-  Calendar: calendar;
+  Fiche: fiche;
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
   gg : any= {};
   users: Array<any>;
   companys: Array<any>;
+  fiches: Array<any>;
 
 
   constructor(private route: ActivatedRoute,
-              private router: Router,private calendarService:CalendarService,
-              private compnayService:CompanyService,
-              private userService:UserService
+              private router: Router,
+              private calendarService:CalendarService,
+              private companyService:CompanyService,
+              private userService:UserService,
+              private ficheService:FicheService
   ) {
 
   }
@@ -43,38 +51,44 @@ export class CalendarComponent implements OnInit {
   }
 
   loadData(){
+
     this.calendarService.getAll().subscribe(data => {
       this.niveaus = data;
-      console.log(this.niveaus);
-    });
+     });
     this.userService.getAll().subscribe(data => {
       this.users = data;
+     });
+    this.companyService.getAll().subscribe(data => {
+      this.companys = data;
+     });
+
+    this.ficheService.getAll().subscribe(data=>{
+      this.fiches =data ;
       console.log(data);
     });
-    this.compnayService.getAll().subscribe(data => {
-      this.companys = data;
-      console.log(this.companys);
-    });
-
-
-
 
   }
 
   gotoList() {
-    this.router.navigate(['/calendar']);
+    this.router.navigate(['/fiche']);
   }
 
   onSubmit() {
 
-    this.Calendar = new calendar(
-      this.form.date);
+    this.Fiche = new fiche(
+      this.form.locaux,
+    this.form.nresponsable,
+    this.form.incerticide,
+    this.form.nencadreur,
+    this.form.observations,
+    this.form.harrive,
+    this.form.hdepart
+    );
 
-    this.calendarService.save(this.Calendar,this.selecteduser,this.selectedcompany).subscribe(
+    this.ficheService.save(this.Fiche,this.selecteduser,this.selectedcompany,this.selectedcalendar).subscribe(
       data => {
         this.isSignedUp = true;
         this.isSignUpFailed = false;
-        this.gotoList();
         this.loadData();
       },
       error => {
@@ -90,12 +104,13 @@ export class CalendarComponent implements OnInit {
 
     this.gg = form ;
 
-    this.calendarService.remove(this.gg).subscribe(result => {
+    this.ficheService.remove(this.gg).subscribe(result => {
       this.gotoList();
       this.loadData();
     }, error => console.error(error));
 
   }
+
 
 
 

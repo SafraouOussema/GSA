@@ -2,38 +2,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyService {
+export class FicheService {
 
 
   public API = '//localhost:8080/application';
 
-  public company_API = this.API + '/companys';
-   public companydelte_API = this.API+'/companys/';
-
-
+  public calendars_API = this.API + '/fiches/';
+  public calendarsd_API = this.API + '/fiches/';
 
   constructor(private http: HttpClient) {
   }
 
 
   getAll(): Observable<any> {
-    return this.http.get(this.API + '/companys');
-  }
-  get(id: string) {
-    return this.http.get(this.companydelte_API+id,{ responseType: 'json' });
+    return this.http.get(this.API + '/fiches');
   }
 
-  save(niv: any): Observable<any> {
+  save(niv: any, userid: any, companyid: any,calendarId:any): Observable<any> {
     let result: Observable<Object>;
-
     result = this.http.post(
-      this.company_API,
+      this.calendarsd_API + userid + "/" + companyid+"/"+calendarId,
       niv,
-      {headers :
+      {
+        headers:
           {
             'Content-Type': 'application/json'
           }
@@ -41,26 +35,26 @@ export class CompanyService {
     );
 
     return result;
-
   }
 
 
   update(prof: any): Observable<any> {
     let result: Observable<Object>;
 
-    result = this.http.post(this.company_API, prof);
+    result = this.http.post(this.calendars_API, prof);
 
     return result;
   }
 
 
-
-  remove(del:any): Observable<any> {
-
+  remove(delniv: any): Observable<any> {
     let result: Observable<Object>;
-     result = this.http.delete(this.companydelte_API+del);
-     return result;
+
+    result = this.http.delete(this.calendarsd_API + delniv);
+
+    return result;
   }
 
 
 }
+

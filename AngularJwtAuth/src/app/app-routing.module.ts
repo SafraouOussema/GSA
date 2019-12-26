@@ -8,15 +8,34 @@ import { UserComponent } from './user/user.component';
 import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
 import {CompanyComponent} from './company/company.component'
+import {CalendarComponent} from './calendar/calendar.component';
+import {FicheComponent} from './fiche/fiche.component';
+import {ProduitComponent} from './produit/produit.component';
+import {LocauxComponent} from './locaux/locaux.component';
 const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent
     },
     {
-
+      path:'calendar',
+      component:CalendarComponent
+    },
+  {
+    path:'produit',
+    component:ProduitComponent
+  },
+  {
+    path:'fiche',
+    component:FicheComponent
+  },
+    {
       path: 'company',
       component: CompanyComponent
+    },
+    {
+      path: 'locaux/:id',
+      component: LocauxComponent
     },
     {
         path: 'user',

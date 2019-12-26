@@ -1,10 +1,17 @@
-
-
 table{
 
   text-align: center;
 
 }
+
+
+.modal-dialog{
+  z-index: 99999999999;
+}
+.modal-backdrop.show {
+  display:none !important;
+}
+
 
 body.stop-scrolling {
   height: 100%;
@@ -939,9 +946,3 @@ body.stop-scrolling {
     -o-transform: translateY(145%);
     transform: translateY(145%); } }
 
-.modal-dialog{
-  z-index: 99999999999;
-}
-.modal-backdrop.show {
-  display:none !important;
-}

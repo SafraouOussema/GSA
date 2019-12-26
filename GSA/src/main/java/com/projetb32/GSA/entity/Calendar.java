@@ -17,7 +17,7 @@ public class Calendar implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    private LocalDate date ;
+    private String date ;
 
     @ManyToOne
     @JoinColumn(name = "users_id")

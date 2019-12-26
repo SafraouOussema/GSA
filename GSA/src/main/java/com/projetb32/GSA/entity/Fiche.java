@@ -22,14 +22,14 @@ public class Fiche implements Serializable {
     private Long id ;
 
 
-    private String Locaux;
-    private String Nresponsable;
+    private String locaux;
+    private String nresponsable;
     private String incerticide;
-    private String Nencadreur;
+    private String nencadreur;
     private String observations;
 
-    private String Harrive;
-    private String Hdepart;
+    private String harrive;
+    private String hdepart;
 
 
     @ManyToOne

@@ -21,6 +21,11 @@ import {ScheduleModule} from '@syncfusion/ej2-angular-schedule';
 import { CompanyComponent } from './company/company.component';
 import {CompanyService} from './services/company.service';
 import { CalendarComponent } from './calendar/calendar.component';
+import { FicheComponent } from './fiche/fiche.component';
+import { ProduitComponent } from './produit/produit.component';
+import {FicheService} from './services/fiche.service';
+import { LocauxComponent } from './locaux/locaux.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +37,10 @@ import { CalendarComponent } from './calendar/calendar.component';
     AdminComponent,
     PmComponent,
     CompanyComponent,
-    CalendarComponent
+    CalendarComponent,
+    FicheComponent,
+    ProduitComponent,
+    LocauxComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +54,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 
 
   ],
-  providers: [httpInterceptorProviders,CompanyService],
+  providers: [httpInterceptorProviders,CompanyService,FicheService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

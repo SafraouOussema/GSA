@@ -12,18 +12,22 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Produit implements Serializable {
+public class Desinsectisation implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    private String Pname ;
+
+    @ManyToOne
+    @JoinColumn(name = "locaux_id")
+    private Locaux locaux ;
 
 
-
+    @ManyToOne
+    @JoinColumn(name = "produit_id")
+    private Produit produit ;
 
 
 }
-

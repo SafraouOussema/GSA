@@ -3,6 +3,7 @@ package com.projetb32.GSA.controller;
 
 import com.projetb32.GSA.entity.Fiche;
 import com.projetb32.GSA.repository.FicheReposity;
+import com.projetb32.GSA.service.FicheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,8 @@ public class FicheController {
 
     @Autowired
     private FicheReposity ficheRepository;
+    @Autowired
+    private FicheService ficheService;
 
 
     @GetMapping("/fiches")
@@ -32,10 +35,10 @@ public class FicheController {
     }
 
 
-    @PostMapping("/fiches")
-    public ResponseEntity<Fiche> addCompany(@RequestBody Fiche fiche) {
-        Fiche ficheLocal = null;
-        ficheLocal = ficheRepository.save(fiche);
+
+    @PostMapping("/fiches/{userId}/{companyId}/{calendarId}")
+    public ResponseEntity<Fiche> addFiche(@RequestBody Fiche fiche, @PathVariable long userId, @PathVariable long companyId, @PathVariable  long calendarId) {
+        Fiche ficheLocal = ficheService.addFiche(fiche, userId,companyId,calendarId);
 
         if (ficheLocal == null)
             return ResponseEntity.noContent().build();

@@ -45,13 +45,14 @@ export class CompanyComponent implements OnInit {
   }
 
   onSubmit() {
-
     this.Company = new company(
       this.form.label,
       this.form.address);
 
     this.compnayService.save(this.Company).subscribe(
       data => {
+        this.gotoList();
+        this.loadData();
         this.isSignedUp = true;
         this.isSignUpFailed = false;
       },

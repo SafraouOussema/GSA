@@ -1,0 +1,93 @@
+
+
+<section class="content">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-7 col-md-6 col-sm-12">
+        <h2>Locaux
+        </h2>
+      </div>
+      <div class="col-lg-5 col-md-6 col-sm-12">
+
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <!-- Advanced Validation -->
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+
+          <div class="body">
+
+
+
+
+
+            <table class="table table-striped " [mfData]="gcs"  #mf="mfDataTable" >
+              <thead>
+              <tr>
+
+
+                <th  >
+                  <mfDefaultSorter by="nom">nom</mfDefaultSorter>
+                </th>
+                <th s >
+                  <mfDefaultSorter by="nom">action</mfDefaultSorter>
+
+                </th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let gc of mf.data">
+
+                <td >{{gc.name}}</td>
+                <td >{{gc.nbGroupClass}}</td>
+
+                <td>
+                  <i class="material-icons" (click)="remove(gc.id)" > delete_forever</i>
+                </td>
+
+              </tr>
+              </tbody>
+            </table>
+
+
+
+
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="row col-sm-6" style="max-width:350px;">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="name">name </label>
+        <input type="text" class="form-control" name="label" [(ngModel)]="form.name" #label="ngModel" required />
+        <div *ngIf="f.submitted && label.invalid">
+          <div *ngIf="label.errors.required">Name is required</div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <button class="btn btn-primary">Ajouter</button>
+        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+          erreur!<br/>{{errorMessage}}
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+</section>

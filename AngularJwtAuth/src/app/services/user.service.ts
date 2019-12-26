@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  public API = '//localhost:8080/';
 
   private userUrl = 'http://localhost:8080/api/test/user';
   private pmUrl = 'http://localhost:8080/api/test/pm';
@@ -24,4 +25,10 @@ export class UserService {
   getAdminBoard(): Observable<string> {
     return this.http.get(this.adminUrl, { responseType: 'text' });
   }
+
+  getAll(): Observable<any> {
+    return this.http.get(this.API +'users');
+  }
+
+
 }

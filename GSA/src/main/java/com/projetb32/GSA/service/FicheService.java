@@ -23,8 +23,6 @@ public class FicheService {
     private CalendarRepository calendarRepository;
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private ProduitRepository produitRepository;
 
 
 

@@ -5,7 +5,7 @@
   <div class="block-header">
     <div class="row">
       <div class="col-lg-7 col-md-6 col-sm-12">
-        <h2>Niveau
+        <h2>Produit
         </h2>
       </div>
       <div class="col-lg-5 col-md-6 col-sm-12">
@@ -29,12 +29,10 @@
               <thead>
               <tr>
 
-                <th style="width: 10%">
+                <th >
                   <mfDefaultSorter by="nom">nom</mfDefaultSorter>
                 </th>
-                <th style="width: 10%">
-                  <mfDefaultSorter by="nom">adress</mfDefaultSorter>
-                </th>
+
                 <th style="width: 10%">
                   <mfDefaultSorter by="nom">Action</mfDefaultSorter>
 
@@ -45,11 +43,9 @@
 
               <tr *ngFor="let niveau of mf.data">
 
-                <td >{{niveau.label}}</td>
-                <td>{{niveau.address}}</td>
+                <td >{{niveau.pname}}</td>
 
-                <i class="material-icons" (click)="remove(niveau.id)" > supprimer</i>
-                <td> <a mat-button [routerLink]="['/locaux', niveau.id]">ajouter locaux</a></td>
+                <i class="material-icons" (click)="remove(niveau.id)" > {{niveau.id}}</i>
 
                 <td>
 
@@ -86,21 +82,14 @@
   <div class="row col-sm-6" style="max-width:350px;">
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
-        <label for="label">name entreprise</label>
-        <input type="text" class="form-control" name="label" [(ngModel)]="form.label" #label="ngModel" required />
+        <label for="pname">name </label>
+        <input type="text" class="form-control" name="label" [(ngModel)]="form.pname" #label="ngModel" required />
         <div *ngIf="f.submitted && label.invalid">
           <div *ngIf="label.errors.required">Name is required</div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="address">address</label>
-        <input type="text" class="form-control" name="username" [(ngModel)]="form.address" #address="ngModel"
-               required />
-        <div *ngIf="f.submitted && address.invalid">
-          <div *ngIf="address.errors.required">address is required</div>
-        </div>
-      </div>
+
       <div class="form-group">
         <button class="btn btn-primary">Ajouter</button>
         <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
