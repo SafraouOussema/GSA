@@ -3,18 +3,20 @@ package com.projetb32.GSA.service;
 
 import com.projetb32.GSA.entity.Calendar;
 import com.projetb32.GSA.entity.Company;
+import com.projetb32.GSA.entity.User;
 import com.projetb32.GSA.repository.CalendarRepository;
 import com.projetb32.GSA.repository.CompanyRepository;
 import com.projetb32.GSA.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
 public class CompanyService {
 
-
+   
 
     @Autowired
     private CompanyRepository companyRepository;
@@ -34,5 +36,12 @@ public class CompanyService {
         return companyRepository.findById(id);
     }
 
+
+
+    
+    public List<Calendar> getCalendarByUser(long ficheId) {
+        User fiche = userRepository.findById(ficheId).get();
+        return calendarRepository.findCalendarsByUser(fiche);
+    }
 
 }

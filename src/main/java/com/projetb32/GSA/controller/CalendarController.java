@@ -51,6 +51,17 @@ public class CalendarController  {
         locausList = calendarRepository.find(idusers,date);		
         return new ResponseEntity<>(locausList, HttpStatus.OK);
 	}
+
+    @GetMapping("/calendarsdate/{idusers}")
+    public ResponseEntity<List<Calendar>> retreiveCategoryById(@PathVariable long idusers) {
+        List<Calendar> calendarList;
+        calendarList = companyService.getCalendarByUser(idusers);
+ 
+        return new ResponseEntity<>(calendarList, HttpStatus.OK);
+
+    }
+
+
    
     @PostMapping("/calendars/{userId}/{companyId}")
     public ResponseEntity<Calendar> addCalendar(@RequestBody Calendar calendar, @PathVariable long userId, @PathVariable long companyId) {
@@ -69,5 +80,5 @@ public class CalendarController  {
         return ResponseEntity.accepted().build();
     }
 
-
+ 
 }
