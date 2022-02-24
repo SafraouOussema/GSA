@@ -35,13 +35,15 @@ public class CompanyService {
     public Optional<Company> getCompanyById(Long id) {
         return companyRepository.findById(id);
     }
+ 
+    public List<Calendar> getCalendarByUser(long userId) {
+        User user = userRepository.findById(userId).get();
+        return calendarRepository.findCalendarsByUser(user);
+    }
 
-
-
-    
-    public List<Calendar> getCalendarByUser(long ficheId) {
-        User fiche = userRepository.findById(ficheId).get();
-        return calendarRepository.findCalendarsByUser(fiche);
+    public List<Calendar> getCalendarByCompany(long companyId) {
+        Company company = companyRepository.findById(companyId).get();
+        return calendarRepository.findCalendarsByCompany(company);
     }
 
 }

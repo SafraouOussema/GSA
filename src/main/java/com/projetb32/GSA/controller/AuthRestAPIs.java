@@ -30,7 +30,6 @@ import com.projetb32.GSA.security.jwt.request.SignUpForm;
 import com.projetb32.GSA.security.jwt.response.JwtResponse;
 import com.projetb32.GSA.security.jwt.response.ResponseMessage;
 
-
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -52,10 +51,6 @@ public class AuthRestAPIs {
 
     @Autowired
     JwtProvider jwtProvider;
-
-
-
-
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
@@ -85,7 +80,7 @@ public class AuthRestAPIs {
 
         // Creating user's account
         User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()),signUpRequest.getAddress());
+                encoder.encode(signUpRequest.getPassword()), signUpRequest.getAddress());
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -98,7 +93,14 @@ public class AuthRestAPIs {
                     roles.add(adminRole);
 
                     break;
-                    default:
+                case "company":
+                    Role companyRole = roleRepository.findByName(RoleName.ROLE_COMPANY)
+                            .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not found." ));
+                    roles.add(companyRole);
+
+                    break;
+
+                default:
                     Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
                             .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not found."));
                     roles.add(userRole);
