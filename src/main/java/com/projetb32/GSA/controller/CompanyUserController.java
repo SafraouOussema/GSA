@@ -87,7 +87,7 @@ public class CompanyUserController {
         String body = "Hello ! " + findUser.getName()
                 + "\n You can now use this new credential to login into the application. \n"
                 + "Url : " + " https://gsapwa.netlify.app/ \n" + "Your User Name : " + findUser.getUsername() + "\n"
-                + "Your Password : " + password + "\n";
+                + "Your Password : " + password + "\n You can change the password in your profile.";
 
         emailSenderService.sendEmail(findUser.getEmail(), "GSA Account info", body);
 
