@@ -37,4 +37,14 @@ public class Deratisation implements Serializable {
     
     private float quantite ;
 
+    private  long n_post;
+
+    private boolean appats_touches;
+
+    private boolean appats_non_touches;
+
+    private boolean appats_abscents;
+
+    private boolean poste_abscente;
+
 }
